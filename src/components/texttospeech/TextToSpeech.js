@@ -3,27 +3,18 @@ import TopNavbar from '../../components/topnavbar/TopNavbar';
 import Footer from '../../components/footer/Footer';
 import './TextToSpeech.css';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
-// react plugin used to create DropdownMenu for selecting items
 import Select from 'react-select';
+import ReactAudioPlayer from 'react-audio-player';
 
-
-/* var selectOptions = [
-    { value: 'one', label: 'One' },
-    { value: 'two', label: 'Two' },
-    { value: 'three', label: 'Three' },
-    { value: 'four', label: 'Four' },
-    { value: 'five', label: 'Five' },
-    { value: 'six', label: 'Six' }
-  ]; */
 
 class TextToSpeech extends React.Component {
-
-
     constructor(props){
         super(props);
         this.state = {
             singleSelect: null,
             selectOptions: [],
+            audioSrc: "",
+            textToSpeak: "",
         };
     }
 
@@ -33,8 +24,8 @@ class TextToSpeech extends React.Component {
         .then(voiceData => {
             let voiceArray = [];
             voiceData.voices.forEach(voice => {
-                var name = voice.description.substring(0, voice.description.indexOf(':'))
-                var country = voice.language.substring(3,5)
+                const name = voice.description.substring(0, voice.description.indexOf(':'))
+                const country = voice.language.substring(3,5)
                 const voiceObj={value: voice.name, label: name + " - " + country}
                 voiceArray.push(voiceObj)
             })
@@ -43,7 +34,37 @@ class TextToSpeech extends React.Component {
         .catch(err => console.log(err))    
     }
 
+    textChange = (event) => {
+        this.setState({ textToSpeak: event.target.value })
+    }
+
+    getAudio = () => {
+        if (this.state.textToSpeak === "") {
+            alert("Please enter some text to speak")
+            return false
+        }
+
+        if (this.state.singleSelect === null) {
+            alert("Please select a voice from the dropdown")
+            return false
+        }
+
+        let params = "?text=" + this.state.textToSpeak
+        params = params + "&voice=" + this.state.singleSelect.value
+        fetch('http://localhost:3000/play' + params)
+        .then(response => {
+            if (response.ok) {
+                response.blob().then((blob) => {
+                    const url = window.URL.createObjectURL(blob);
+
+                    this.setState({ audioSrc: url})
+                }) 
+            }
+        })
+    }
+
     render() {
+        console.log(this.state, this.state.audioSrc)
         return (
             <div>
                 <TopNavbar />
@@ -54,31 +75,30 @@ class TextToSpeech extends React.Component {
                     <div className="textArea d-flex justify-content-center">
                         <FormGroup className='inputFormGroup'>
                             <Label className='formlabel' for="text">Enter text below</Label>
-                            <Input type="textarea" name="text" />
+                            <Input 
+                                type="textarea" 
+                                name="text"
+                                onChange={ this.textChange } />         
                         </FormGroup>
                     </div>
                     <div className="d-flex justify-content-center">
-
                         <Select
                             className="selection primary"
                             placeholder="Select voice"
                             name="singleSelect"
                             value={this.state.singleSelect}
                             options={this.state.selectOptions}
-                            onChange={(value) => this.setState({ singleSelect: value})}
-                        />
-
+                            onChange={(value) => this.setState({ singleSelect: value})} />
                     </div>
                     <div className="d-flex justify-content-center">
                         <div className="buttonGroup">
-                            <Button color="primary" round>Round</Button>
-                            <Button color="primary" className="btn-round" id="playbutton">Speek</Button>
-                            <Button className="btn-round" id="stopbutton">Stop</Button>
+                            <Button onClick={ this.getAudio } color='primary' size='lg' className='btn-round' id='playbutton'>Speek</Button>
+                            <Button color='primary' size='lg' className='btn-round' id='stopbutton'>Stop</Button>
                         </div>
                         <div className="audioParent">
-                            <audio className="audio" id="a_player">
-                                Your browser does not support the audio element.
-                            </audio>
+                             <ReactAudioPlayer
+                                src={ this.state.audioSrc }
+                                autoPlay /> 
                         </div>
                     </div>  
                 </div>
