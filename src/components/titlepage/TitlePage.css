@@ -1,0 +1,21 @@
+.pageSetup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+
+.dedication {
+    margin-top: 80px;
+    font-weight: 600;
+    color: lightgray;
+}
+
+.titleLink {
+    margin-bottom: 30px;
+    font-size: 5em;
+    font-weight: 500;
+}

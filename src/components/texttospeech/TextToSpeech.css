@@ -1,0 +1,48 @@
+.sectionTitle {
+    color: white;
+    font-size: 5em;
+    margin-bottom: 45px;
+}
+
+.textArea {
+  width: 70%;
+  background-color: white;
+  opacity: 0.8;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  /* box-shadow: 10px 10px 50px 20px #5E6588; */
+  box-shadow: 32px -1px 66px 11px rgba(179,138,165,1);
+}
+
+.inputFormGroup {
+  width: 90%;
+  font-size: 22px;
+}
+
+.formlabel {
+  font-size: 14px;
+}
+
+.selection {
+    width: 70%;
+    color: black;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: left;
+    opacity: 0.8;
+    background-color:white;
+    border-radius: 30px;
+}
+
+.Select-placeholder {
+  color: #2c2c2c;
+  font-weight: 400;
+}
+.is-open {
+  opacity: 1;
+}
+
+#playbutton, #stopbutton {
+  width: 100px;
+  margin: 15px;
+}
