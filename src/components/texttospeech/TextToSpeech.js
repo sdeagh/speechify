@@ -1,6 +1,4 @@
 import React from 'react';
-import TopNavbar from '../../components/topnavbar/TopNavbar';
-import Footer from '../../components/footer/Footer';
 import './TextToSpeech.css';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import Select from 'react-select';
@@ -60,10 +58,14 @@ class TextToSpeech extends React.Component {
         })
     }
 
+    stopAudio = (event) => {
+        this.setState({ audioSrc: "" })
+    }
+
     render() {
         return (
             <div>
-                <TopNavbar />
+                {/* <TopNavbar /> */}
                 <div className="pageSetup container">
                     <div>
                         <h1 className='sectionTitle'>Text To Speech</h1>
@@ -89,7 +91,7 @@ class TextToSpeech extends React.Component {
                     <div className="d-flex justify-content-center">
                         <div className="buttonGroup">
                             <Button onClick={ this.getAudio } color='primary' size='lg' className='btn-round' id='playbutton'>Speek</Button>
-                            <Button color='primary' size='lg' className='btn-round' id='stopbutton'>Stop</Button>
+                            <Button onClick={ this.stopAudio } color='primary' size='lg' className='btn-round' id='stopbutton'>Stop</Button>
                         </div>
                         <div className="audioParent">
                              <ReactAudioPlayer
@@ -98,7 +100,7 @@ class TextToSpeech extends React.Component {
                         </div>
                     </div>  
                 </div>
-                <Footer />
+                {/* <Footer /> */}
             </div>
         )
     }
