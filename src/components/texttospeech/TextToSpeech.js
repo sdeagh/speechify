@@ -7,14 +7,14 @@ import { Button, FormGroup, Label, Input } from 'reactstrap';
 import Select from 'react-select';
 
 
-var selectOptions = [
+/* var selectOptions = [
     { value: 'one', label: 'One' },
     { value: 'two', label: 'Two' },
     { value: 'three', label: 'Three' },
     { value: 'four', label: 'Four' },
     { value: 'five', label: 'Five' },
     { value: 'six', label: 'Six' }
-  ];
+  ]; */
 
 class TextToSpeech extends React.Component {
 
@@ -23,7 +23,24 @@ class TextToSpeech extends React.Component {
         super(props);
         this.state = {
             singleSelect: null,
+            selectOptions: [],
         };
+    }
+
+    componentDidMount() {
+        fetch("http://localhost:3000/voices")
+        .then(response => response.json(response))
+        .then(voiceData => {
+            let voiceArray = [];
+            voiceData.voices.forEach(voice => {
+                var name = voice.description.substring(0, voice.description.indexOf(':'))
+                var country = voice.language.substring(3,5)
+                const voiceObj={value: voice.name, label: name + " - " + country}
+                voiceArray.push(voiceObj)
+            })
+            this.setState( {selectOptions: voiceArray })
+        })
+        .catch(err => console.log(err))    
     }
 
     render() {
@@ -47,15 +64,16 @@ class TextToSpeech extends React.Component {
                             placeholder="Select voice"
                             name="singleSelect"
                             value={this.state.singleSelect}
-                            options={selectOptions}
+                            options={this.state.selectOptions}
                             onChange={(value) => this.setState({ singleSelect: value})}
                         />
 
                     </div>
                     <div className="d-flex justify-content-center">
                         <div className="buttonGroup">
-                            <Button color="primary" size="lg" className="btn-round" id="playbutton">Speek</Button>
-                            <Button color="primary" size="lg" className="btn-round" id="stopbutton">Stop</Button>
+                            <Button color="primary" round>Round</Button>
+                            <Button color="primary" className="btn-round" id="playbutton">Speek</Button>
+                            <Button className="btn-round" id="stopbutton">Stop</Button>
                         </div>
                         <div className="audioParent">
                             <audio className="audio" id="a_player">
