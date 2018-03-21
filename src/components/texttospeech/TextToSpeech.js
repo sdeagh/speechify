@@ -43,12 +43,10 @@ class TextToSpeech extends React.Component {
             alert("Please enter some text to speak")
             return false
         }
-
         if (this.state.singleSelect === null) {
             alert("Please select a voice from the dropdown")
             return false
         }
-
         let params = "?text=" + this.state.textToSpeak
         params = params + "&voice=" + this.state.singleSelect.value
         fetch('http://localhost:3000/play' + params)
@@ -56,7 +54,6 @@ class TextToSpeech extends React.Component {
             if (response.ok) {
                 response.blob().then((blob) => {
                     const url = window.URL.createObjectURL(blob);
-
                     this.setState({ audioSrc: url})
                 }) 
             }
@@ -64,7 +61,6 @@ class TextToSpeech extends React.Component {
     }
 
     render() {
-        console.log(this.state, this.state.audioSrc)
         return (
             <div>
                 <TopNavbar />
