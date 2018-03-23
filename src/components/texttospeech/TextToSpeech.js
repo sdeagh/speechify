@@ -18,7 +18,7 @@ class TextToSpeech extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:3000/voices")
+        fetch("https://hidden-temple-52407.herokuapp.com/voices")
         .then(response => response.json(response))
         .then(voiceData => {
             let voiceArray = [];
@@ -40,7 +40,6 @@ class TextToSpeech extends React.Component {
     }
 
     getAudio = () => {
-        console.log("getting audio")
         if (this.state.textToSpeak === "") {
             alert("Please enter some text to speak")
             return false
@@ -52,7 +51,7 @@ class TextToSpeech extends React.Component {
         this.setState({ isLoading: true })
         let params = "?text=" + this.state.textToSpeak
         params = params + "&voice=" + this.state.singleSelect.value
-        fetch('http://localhost:3000/play' + params)
+        fetch('https://hidden-temple-52407.herokuapp.com/play' + params)
         .then(response => {
             if (response.ok) {
                 response.blob().then((blob) => {

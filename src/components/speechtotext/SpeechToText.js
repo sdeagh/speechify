@@ -27,7 +27,7 @@ class SpeechToText extends React.Component {
     }
 
     fetchToken() {
-        return fetch('http://localhost:3000/api/token').then((res) => {
+        return fetch('https://hidden-temple-52407.herokuapp.com/api/token').then((res) => {
           if (res.status !== 200) {
             throw new Error('Error retrieving auth token');
           }
