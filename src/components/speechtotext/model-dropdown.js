@@ -2,12 +2,10 @@ import React from 'react';
 import SpeechToText from 'watson-speech/speech-to-text';
 import Select from 'react-select';
 
-
 // The list of models changes rarely, so we're caching it in a JSON file for faster initial
 // load time. Once we have a token, this component will automatically fetch the current list
 // of models and update the UI if necessary.
 import cachedModels from './models.json';
-
 
 class ModelDropdown extends React.Component {
 
@@ -17,12 +15,6 @@ class ModelDropdown extends React.Component {
             models: [],
         }
     }
-
-/*     propTypes: {
-        model: PropTypes.string.isRequired,
-        token: PropTypes.string,
-        onChange: PropTypes.func,
-    } */
 
     getInitialState() {
         // initialize with a (possibly outdated) cached JSON models file,
