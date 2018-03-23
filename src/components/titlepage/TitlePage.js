@@ -17,7 +17,7 @@ const TitlePage = () => {
                     </div>
                     <hr/>
                     <div className="title-brand">
-                        <Link to='/speechifynpm start/tts' className='titleLink'>
+                        <Link to='/speechify/tts' className='titleLink'>
                             <h1 className="titleText">Text to Speech</h1>
                         </Link>
                     </div>
