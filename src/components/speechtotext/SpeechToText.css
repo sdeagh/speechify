@@ -1,0 +1,40 @@
+#recordbutton, #stoprecording {
+    width: 150px;
+    margin: 15px;
+    margin-bottom: 30px;
+  }
+
+  .microphone {
+      color: white;
+      animation: pulsing 1s linear infinite;
+  }
+
+  
+  .receivedText {
+      height: 200px;
+      background: white;
+      opacity: 0.8;
+      width: 70%;
+      margin: 0 auto;
+      font-size: 14px;
+      padding: 8px;
+      text-align: left;
+  }
+
+  @keyframes pulsing {
+    0% {
+      transform: scale(1);
+    }
+    20% {
+      transform: scale(1.5);
+    }
+    40% {
+        transform: scale(1);
+      }
+    60% {
+        transform: scale(0.75);
+      }
+    100% {
+      transform: scale(1);
+    }
+  }

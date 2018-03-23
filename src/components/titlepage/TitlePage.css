@@ -1,6 +1,6 @@
 .pageSetup {
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     z-index: 2;
     transform: translate(-50%, -50%);
@@ -14,8 +14,20 @@
     color: lightgray;
 }
 
-.titleLink {
+.titleText {
     margin-bottom: 30px;
     font-size: 5em;
     font-weight: 500;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+}
+
+.titleText:hover {
+    transform: scale(1.1);
+    color: #fa7a50;
+    font-weight: 500;
+}
+
+.titleLink:hover {
+    text-decoration: none;
 }

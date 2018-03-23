@@ -15,7 +15,9 @@
     "react-scripts": "1.1.1",
     "react-select": "^1.2.1",
     "react-transition-group": "^2.2.1",
-    "reactstrap": "^4.8.0"
+    "reactstrap": "^4.8.0",
+    "watson-developer-cloud": "^3.2.1",
+    "watson-speech": "^0.34.1"
   },
   "scripts": {
     "start": "PORT=3006 react-scripts start",
