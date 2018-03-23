@@ -109,7 +109,7 @@ class TextToSpeech extends React.Component {
                                 id='playbutton'>
                                 { this.state.isLoading 
                                     ? <FontAwesome className='spinner' spin style={{ color: '#FFFFFF'}} name='spinner'></FontAwesome>
-                                    : 'Speek' }
+                                    : 'Speak' }
                             </Button>
                             <Button onClick={ this.stopAudio } color='primary' size='lg' className='btn-round' id='stopbutton'>Stop</Button>
                         </div>
