@@ -10,7 +10,7 @@ const TopNavbar = () => {
             <div className="container">
                 <Link className="navbar-brand" to="/speechify">Home</Link>
                 <NavItem className="navbar-nav ml-auto">
-                    <Link className="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" to="https://www.github.com/sdeagh/speech-to-text" target="_blank">
+                    <Link className="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" to="https://www.github.com/sdeagh/speechify" target="_blank">
                         <FontAwesome style={{ color: 'white'}} name='github' size='2x' />
                     </Link>
                 </NavItem>
