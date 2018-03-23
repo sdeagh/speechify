@@ -13,9 +13,9 @@ class App extends Component {
 			<div className="App">
 			<TopNavBar />
 				<Switch>
-					<Route path='/' exact component={ TitlePage } />
-					<Route path='/stt' component={ SpeechToText } />
-					<Route path='/tts' component={ TextToSpeech } />
+					<Route path='/speechify' exact component={ TitlePage } />
+					<Route path='/speechify/stt' component={ SpeechToText } />
+					<Route path='/speechify/tts' component={ TextToSpeech } />
 				</Switch>
 				<Footer />
 			</div>

@@ -11,13 +11,13 @@ const TitlePage = () => {
             <div className="pageSetup">
                 <div className="container d-flex flex-column align-items-center">
                     <div className="title-brand">
-                        <Link to='/stt' className='titleLink'>
+                        <Link to='/speechify/stt' className='titleLink'>
                             <h1 className="titleText">Speech to Text</h1>
                         </Link> 
                     </div>
                     <hr/>
                     <div className="title-brand">
-                        <Link to='/tts' className='titleLink'>
+                        <Link to='/speechifynpm start/tts' className='titleLink'>
                             <h1 className="titleText">Text to Speech</h1>
                         </Link>
                     </div>
